@@ -1,0 +1,7 @@
+.App {
+  display: grid;
+  grid-template-areas: 
+  'header header header header header'
+  'navmenu main main main actionmenu';
+  height: 100%;
+}

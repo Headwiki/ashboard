@@ -1,0 +1,31 @@
+.Header {
+    display: grid;
+    grid-template-areas: 'logo avatar';
+    grid-area: header;
+    height: 4rem;
+    border-bottom: 0.125rem #c4c4c4 solid;
+    align-items: center;
+    
+}
+
+.Header > .item {
+    align-items: center;
+    margin: 0;
+}
+
+.Header > .logo {
+    margin-left: 4rem;
+    grid-area: logo;
+}
+
+.Header > .fa-user-alt {
+    display: grid;
+    grid-area: avatar;
+    margin-right: 4rem;
+    justify-self: end;
+    padding: 1rem;
+}
+
+.Header > .fa-user-alt:hover {
+    background-color: #ececec;
+}

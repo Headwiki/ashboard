@@ -1,3 +1,8 @@
 .NavMenu {
     grid-area: navmenu;
+    background-color: #fafafa;
+}
+
+.NavMenu > ul, li {
+    list-style-type: none;
 }

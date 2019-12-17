@@ -2,7 +2,6 @@
     display: grid;
     grid-template-areas: 'logo avatar';
     grid-area: header;
-    height: 4rem;
     border-bottom: 0.125rem #c4c4c4 solid;
     align-items: center;
     
@@ -16,6 +15,8 @@
 .Header > .logo {
     margin-left: 4rem;
     grid-area: logo;
+    font-family: 'Raleway', sans-serif;
+    font-weight:300;
 }
 
 .Header > .fa-user-alt {

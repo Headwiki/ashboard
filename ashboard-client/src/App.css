@@ -5,4 +5,5 @@
   'navmenu main actionmenu';
   grid-template-rows: 4rem 1fr;
   grid-template-columns: 1fr 5fr 2fr;
+  background-color: #fafafa;
 }

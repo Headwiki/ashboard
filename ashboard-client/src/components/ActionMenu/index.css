@@ -2,5 +2,4 @@
     grid-area: actionmenu;
     height: calc(100vh - 4rem - 0.125rem);
     background-color: #fafafa;
-    box-shadow: 0px 3px 6px #a6a6a6;
 }

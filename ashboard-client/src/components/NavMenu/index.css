@@ -1,8 +1,28 @@
 .NavMenu {
     grid-area: navmenu;
     background-color: #fafafa;
+    font-family: 'Roboto', sans-serif;
 }
 
 .NavMenu > ul, li {
     list-style-type: none;
 }
+
+.NavMenu ul {
+    padding: 0;
+}
+
+.NavMenu li {
+    border-bottom: 1px solid #bfbfbf;
+    padding: 1rem;
+}
+
+.NavMenu ul li:first-child {
+    border-top: 1px solid #bfbfbf;
+}
+
+.NavMenu li:hover {
+    color:#0058ff; /*#0087ff*/
+    background-color: #ececec;
+}
+

@@ -1,0 +1,5 @@
+.ActionMenu {
+    grid-area: actionmenu;
+    height: calc(100vh - 4rem - 0.125rem);
+    background-color: #fafafa;
+}

@@ -1,3 +1,4 @@
+require('dotenv').config()
 const express = require("express");
 const graphqlHTTP = require("express-graphql");
 const mongoose = require("mongoose");
@@ -7,9 +8,12 @@ const schema = require("./schema/schema");
 const app = express();
 
 mongoose.connect(
-  "mongodb://test123:test123@ds257648.mlab.com:57648/graphqltest",
-  { useNewUrlParser: true },
-  () => {
+  `mongodb+srv://${process.env.DB_USER}:${process.env.DB_PASS}@cluster0-ebosp.mongodb.net/graphql-test?retryWrites=true&w=majority`,
+  { 
+    useNewUrlParser: true,
+  },
+  (err) => {
+    if (err) throw err;
     console.log("Connect with DB successfully.");
   }
 );

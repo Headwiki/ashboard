@@ -13,17 +13,6 @@ const {
   GraphQLList
 } = graphql;
 
-/* const SongsArray = [
-  { id: "1", title: "Midnight heartache", artist: "September", url: "https://www.youtube.com/watch?v=enpRJNBzkeM", userId: "1" },
-  { id: "2", title: "hope is a dangerous thing for a woman like me to have - but i have it", artist: "Lana Del Rey", url: "https://www.youtube.com/watch?v=rY2LUmLw_DQ", userId: "2" },
-  { id: "3", title: "Molly Hatchet", artist: " Fall of the Peacemakers", url: "https://www.youtube.com/watch?v=OzKBu66ceOc", userId: "1" }
-];
-
-const UsersArray = [
-  { id: "1", username: "Headwiki" },
-  { id: "2", username: "Feerun" }
-]; */
-
 // Defining SongType with its fields.
 const SongType = new GraphQLObjectType({
   name: "Song",
@@ -59,13 +48,12 @@ const RootQuery = new GraphQLObjectType({
   name: "RootQueryType",
   fields: {
     // Fields here will be the query for frontends
-    //We are defining a 'car' query which can take (car ID ) to search in DB.
     song: {
-      type: SongType, //Defining model for car Query
-      args: { id: { type: GraphQLID } },  //args field to extract argument came with car query, e.g : Id of the car object to extract its details.
+      type: SongType,
+      args: { id: { type: GraphQLID } },
       resolve(parent, args) {
         return songs.findById(args.id);
-      } //resolve function
+      }
     },
     user: {
       type: UserType,
@@ -86,13 +74,13 @@ const RootQuery = new GraphQLObjectType({
         return users.find({});
       }
     }
-  } //fields end here
+  }
 });
 
 const Mutation = new GraphQLObjectType({
   name: "Mutation",
   fields: {
-    addUser: {    // To add Owner in DB
+    addUser: {    // To add User in DB
       type: UserType,
       args: {
         username: { type: GraphQLString }
@@ -101,7 +89,7 @@ const Mutation = new GraphQLObjectType({
         let user = new users({
           username: args.username
         });
-        return user.save(); //create owner data in mlab
+        return user.save();
       }
     },
     addSong: {
@@ -121,10 +109,10 @@ const Mutation = new GraphQLObjectType({
         return song.save();
       }
     }
-  } //fields ends here
+  }
 });
 
-//exporting 'GraphQLSchema with RootQuery' for GraphqlHTTP middleware.
+//exporting 'GraphQLSchema' for GraphqlHTTP middleware.
 module.exports = new GraphQLSchema({
   query: RootQuery,
   mutation: Mutation

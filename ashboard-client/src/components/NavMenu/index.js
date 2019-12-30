@@ -5,9 +5,8 @@ function NavMenu() {
     return (
         <div className='NavMenu'>
             <ul>
-                <li>HOME</li>
-                <li>TOOLS</li>
-                <li>ABOUT</li>
+                <li>SONGS</li>
+                <li>USERS</li>
             </ul>
         </div>
     )

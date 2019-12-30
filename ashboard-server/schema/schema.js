@@ -30,7 +30,6 @@ const SongType = new GraphQLObjectType({
   fields: () => ({
     id: { type: GraphQLID },
     title: { type: GraphQLString },
-    artist: { type: GraphQLString },
     url: { type: GraphQLString },
     user: {
       type: UserType,
@@ -109,14 +108,12 @@ const Mutation = new GraphQLObjectType({
       type: SongType,
       args: {
         title: { type: GraphQLString },
-        artist: { type: GraphQLString },
         url: { type: GraphQLString },
         userId: { type: GraphQLID }
       },
       resolve(parent, args) {
         let song = new songs({
           title: args.title,
-          artist: args.artist,
           url: args.url,
           userId: args.userId
         });

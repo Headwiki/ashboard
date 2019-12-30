@@ -1,9 +1,14 @@
 import React from "react"
 import "./index.css"
+import SongList from "../Songs/SongList";
+import AddSong from "../Songs/AddSong";
 
 function Main() {
     return (
-        <div className='Main'></div>
+        <div className='Main'>
+            <SongList />
+            {/* <AddSong /> */}
+        </div>
     )
 }
 

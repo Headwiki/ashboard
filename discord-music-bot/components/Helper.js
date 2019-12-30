@@ -25,4 +25,18 @@ async function getAllMessages(channel) {
   return sum_messages;
 }
 
+// Returns title of youtube link in message
+async function getYoutubeTitle(message) {
+    const youtubeRegex = /http(?:s)?:\/\/(?:www\.)?youtube.*watch\?v=([a-zA-Z0-9\-_]+)/
+      let matches = youtubeRegex.exec(message.content)
+      if (matches) {
+        request(`https://www.googleapis.com/youtube/v3/videos?key=${process.env.YOUTUBE_API_KEY}&part=snippet&id=${matches[1]}`, (err, res, body) => {
+          if (!err && res.statusCode == 200) {
+            return JSON.parse(body).items[0].snippet.title // Title
+          }
+        })
+      }
+}
+
 exports.getAllMessages = getAllMessages
+exports.getYoutubeTitle = getYoutubeTitle

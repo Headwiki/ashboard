@@ -33,6 +33,7 @@ const UserType = new GraphQLObjectType({
   name: "User",
   fields: () => ({
     id: { type: GraphQLID },
+    discordId: { type: GraphQLString },
     username: { type: GraphQLString },
     songs: {
       type: new GraphQLList(SongType),
@@ -57,9 +58,14 @@ const RootQuery = new GraphQLObjectType({
     },
     user: {
       type: UserType,
-      args: { id: { type: GraphQLID } },
+      args: { id: { type: GraphQLID }, discordId: { type: GraphQLString } },
       resolve(parent, args) {
-        return users.findById(args.id);
+        if (args.id)
+          return users.findById(args.id)
+        else if (args.discordId)
+          return users.findOne({discordId: args.discordId})
+        else
+          throw new Error('id is requires')
       }
     },
     songs: {
@@ -83,10 +89,12 @@ const Mutation = new GraphQLObjectType({
     addUser: {    // To add User in DB
       type: UserType,
       args: {
+        discordId: { type: GraphQLString },
         username: { type: GraphQLString }
       },
       resolve(parent, args) {
         let user = new users({
+          discordId: args.discordId,
           username: args.username
         });
         return user.save();

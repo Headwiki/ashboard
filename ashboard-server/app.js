@@ -8,7 +8,7 @@ const schema = require("./schema/schema");
 const app = express();
 
 mongoose.connect(
-  `mongodb+srv://${process.env.DB_USER}:${process.env.DB_PASS}@cluster0-ebosp.mongodb.net/graphql-test?retryWrites=true&w=majority`,
+  `mongodb+srv://${process.env.DB_USER}:${process.env.DB_PASS}@${process.env.DB_HOST}/${process.env.DB_NAME}`,
   { 
     useNewUrlParser: true,
   },

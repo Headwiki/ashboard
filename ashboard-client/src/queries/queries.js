@@ -5,6 +5,10 @@ const getSongsQuery = gql`
     songs {
       title
       id
+      url
+      user{
+        username
+      }
     }
   }
 `;
